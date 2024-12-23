@@ -34,39 +34,42 @@ function getHumanChoice() {
     }
 };
 
+let roundResult = ""
+
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         console.log("Draw!");
     } else if (humanChoice === 'rock') {
         if (computerChoice === 'scissors') {
-            console.log("You win! Rock beats Scissors");
+            roundResult = "You win! Rock beats Scissors";
             return 1;
         } else if (computerChoice === "paper") {
-            console.log("You loose! Paper beats Rock");
+             roundResult = "You loose! Paper beats Rock";
             return 0;
         }
     } else if (humanChoice === 'paper') {
         if (computerChoice === 'scissors') {
-            console.log("You loose! Scissors beats Paper");
+             roundResult = "You loose! Scissors beats Paper";
             return 0;
         } else if (computerChoice === "rock") {
-            console.log("You win! Paper beats Rock");
+             roundResult = "You win! Paper beats Rock";
             return 1;
         }
     } else if (humanChoice === 'scissors') {
         if (computerChoice === 'paper') {
-            console.log("You win! Scissors beats Paper");
+             roundResult = "You win! Scissors beats Paper";
             return 1;
         } else if (computerChoice === "rock") {
-            console.log("You lose! Rock beats Scissors");
+             roundResult = "You lose! Rock beats Scissors";
             return 0;
         }
     }
 };
 
+let humanScore = 0;
+let computerScore = 0;
+
 function playGame(humanSelection, computerSelection) {
-    let humanScore = 0;
-    let computerScore = 0;
 
     let roundWinner = playRound(humanSelection, computerSelection);
     if (roundWinner === 1) {
@@ -78,6 +81,8 @@ function playGame(humanSelection, computerSelection) {
     return "Your Score: " + humanScore + " Computer Score: " + computerScore;
 }
 
+const roundText = document.querySelector(".round");
+
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
         const humanMove = button.getAttribute("id");
@@ -85,12 +90,15 @@ buttons.forEach((button) => {
         switch (humanMove) {
             case "rock":
                 messageContainer.textContent = playGame(humanMove, computerSelection);
+                roundText.textContent = roundResult;
                 break;
             case "paper":
                 messageContainer.textContent = playGame(humanMove, computerSelection);
+                roundText.textContent = roundResult;
                 break;
             case "scissors":
                 messageContainer.textContent = playGame(humanMove, computerSelection);
+                roundText.textContent = roundResult;
                 break;
             default:
                 messageContainer.textContent = "error";
