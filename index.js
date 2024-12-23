@@ -1,4 +1,4 @@
-console.log("Hello, World!");
+const prompt = require('prompt');
 
 function getComputerChoice() {
     let result = (Math.floor((Math.random() * 10)) % 3) + 1;
@@ -19,7 +19,20 @@ function getComputerChoice() {
 };
 
 function getHumanChoice() {
-
+    let humanChoice = prompt("rock, paper or scissors?");
+    humanChoice = humanChoice.toLowerCase();
+    switch (humanChoice) {
+        case "rock":
+            return "rock";
+        case "paper":
+            return "paper";
+        case "scissors":
+            return "scissors";
+        default:
+            return 'Error';
+    }
 };
 
-module.exports = getComputerChoice, getHumanChoice;
+console.log(getHumanChoice());
+
+module.exports = { getComputerChoice, getHumanChoice };
