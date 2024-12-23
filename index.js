@@ -18,4 +18,8 @@ function getComputerChoice() {
     return result;
 };
 
-module.exports = getComputerChoice;
+function getHumanChoice() {
+
+};
+
+module.exports = getComputerChoice, getHumanChoice;
