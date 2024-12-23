@@ -1,3 +1,6 @@
+const buttons = document.querySelectorAll(".btn");
+const messageContainer = document.querySelector(".messages");
+
 function getComputerChoice() {
     let result = (Math.floor((Math.random() * 10)) % 3) + 1;
     switch (result) {
@@ -61,24 +64,41 @@ function playRound(humanChoice, computerChoice) {
     }
 };
 
-function playGame() {
+function playGame(humanSelection, computerSelection) {
     let humanScore = 0;
     let computerScore = 0;
 
-    let numberOfRounds = 5
-    for (let i = 0; i < numberOfRounds; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        let roundWinner = playRound(humanSelection, computerSelection);
-        if (roundWinner === 1) {
-            humanScore++;
-        } else {
-            computerScore++;
-        }
+    let roundWinner = playRound(humanSelection, computerSelection);
+    if (roundWinner === 1) {
+        humanScore++;
+    } else {
+        computerScore++;
     }
-    console.log("Your Score: ", humanScore, " Computer Score: ", computerScore);
+    
+    return "Your Score: " + humanScore + " Computer Score: " + computerScore;
 }
 
-playGame();
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const humanMove = button.getAttribute("id");
+        const computerSelection = getComputerChoice();
+        switch (humanMove) {
+            case "rock":
+                messageContainer.textContent = playGame(humanMove, computerSelection);
+                break;
+            case "paper":
+                messageContainer.textContent = playGame(humanMove, computerSelection);
+                break;
+            case "scissors":
+                messageContainer.textContent = playGame(humanMove, computerSelection);
+                break;
+            default:
+                messageContainer.textContent = "error";
+                break;
+        }
+    });
+});
+
+//playGame();
 
 module.exports = getComputerChoice;
