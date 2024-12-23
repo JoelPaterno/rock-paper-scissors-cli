@@ -1,5 +1,4 @@
-const prompt = require('prompt');
-
+const prompt=require("prompt-sync")({sigint:true}); 
 function getComputerChoice() {
     let result = (Math.floor((Math.random() * 10)) % 3) + 1;
     switch (result) {

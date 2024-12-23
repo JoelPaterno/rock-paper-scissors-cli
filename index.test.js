@@ -7,16 +7,3 @@ describe("computer choice function", () => {
         expect(['rock', 'paper', 'scissors']).toContain(getComputerChoice());
     })
 });
-
-describe("human choice function", () => {
-    test('returns valid user input', () => {
-        const promptSpy = jest.spyOn(window, 'prompt').mockReturnValueOnce('rock');
-        const returnVal = getHumanChoice();
-        expect(returnVal).toBe('rock');
-        promptSpy.mockRestore();
-    });
-
-    //takes upper case
-    //takes capslock
-    //returns error for typos
-});
