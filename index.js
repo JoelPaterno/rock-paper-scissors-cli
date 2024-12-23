@@ -1,4 +1,7 @@
 const prompt=require("prompt-sync")({sigint:true}); 
+
+let humanScore = 0;
+let computerScore = 0;
 function getComputerChoice() {
     let result = (Math.floor((Math.random() * 10)) % 3) + 1;
     switch (result) {
